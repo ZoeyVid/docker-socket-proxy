@@ -121,6 +121,7 @@ default. Maximum caution when enabling these.
 You will possibly need to grant access to some of these API sections, which are not so
 extremely critical but can expose some information that your service does not need.
 
+-   `ALLOW_POWER`
 -   `BUILD`
 -   `COMMIT`
 -   `CONFIGS`

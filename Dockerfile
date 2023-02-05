@@ -1,7 +1,14 @@
-FROM haproxy:2.2-alpine
+FROM haproxy:2.7.4-alpine3.17
+USER root
+RUN apk add --no-cache openssl curl
+    
+COPY start.sh /usr/local/bin/start.sh
+COPY haproxy.cfg /etc/haproxy/haproxy.cfg
+COPY haproxy-no-post.cfg /etc/haproxy/haproxy-no-post.cfg
+ENTRYPOINT ["start.sh"]
+HEALTHCHECK CMD (curl -sI http://localhost:2375 -o /dev/null && curl -skI https://localhost:2375 -o /dev/null) || exit 1
 
-EXPOSE 2375
-ENV ALLOW_RESTARTS=0 \
+ENV ALLOW_POWER=0 \
     AUTH=0 \
     BUILD=0 \
     COMMIT=0 \
@@ -13,7 +20,6 @@ ENV ALLOW_RESTARTS=0 \
     GRPC=0 \
     IMAGES=0 \
     INFO=0 \
-    LOG_LEVEL=info \
     NETWORKS=0 \
     NODES=0 \
     PING=1 \
@@ -27,5 +33,5 @@ ENV ALLOW_RESTARTS=0 \
     SYSTEM=0 \
     TASKS=0 \
     VERSION=1 \
-    VOLUMES=0
-COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+    VOLUMES=0 \
+    NOPOST=0
