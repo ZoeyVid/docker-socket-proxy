@@ -1,4 +1,4 @@
-FROM alpine:20230208
+FROM haproxy:2.7.2-alpine3.17
 
 RUN apk upgrade --no-cache && \
     apk add --no-cache ca-certificates wget tzdata openssl haproxy
