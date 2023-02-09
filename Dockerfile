@@ -1,5 +1,5 @@
 FROM haproxy:2.7.2-alpine3.17
-
+USER root
 RUN apk upgrade --no-cache && \
     apk add --no-cache ca-certificates wget tzdata openssl
     
