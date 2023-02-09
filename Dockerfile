@@ -1,7 +1,7 @@
 FROM haproxy:2.7.2-alpine3.17
 
 RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates wget tzdata openssl haproxy
+    apk add --no-cache ca-certificates wget tzdata openssl
     
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 COPY --chmod=744 start.sh /usr/local/bin/start.sh
