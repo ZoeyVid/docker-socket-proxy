@@ -18,7 +18,6 @@ ENV ALLOW_RESTARTS=0 \
     GRPC=0 \
     IMAGES=0 \
     INFO=0 \
-    LOG_LEVEL=info \
     NETWORKS=0 \
     NODES=0 \
     PING=1 \
