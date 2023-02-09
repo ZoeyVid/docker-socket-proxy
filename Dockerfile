@@ -5,6 +5,7 @@ RUN apk upgrade --no-cache && \
     
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 COPY --chmod=744 start.sh /usr/local/bin/start.sh
+ENTRYPOINT ["start.sh"]
 
 ENV ALLOW_POWER=0 \
     AUTH=0 \
@@ -32,5 +33,3 @@ ENV ALLOW_POWER=0 \
     TASKS=0 \
     VERSION=1 \
     VOLUMES=0
-    
-ENTRYPOINT ["start.sh"]
