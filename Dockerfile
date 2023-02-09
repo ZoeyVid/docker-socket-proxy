@@ -4,9 +4,9 @@ RUN apk upgrade --no-cache && \
     apk add --no-cache ca-certificates wget tzdata openssl haproxy
     
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
-COPY --chmod=764 start.sh /usr/local/bin/start.sh
+COPY --chmod=744 start.sh /usr/local/bin/start.sh
 
-ENV ALLOW_RESTARTS=0 \
+ENV ALLOW_POWER=0 \
     AUTH=0 \
     BUILD=0 \
     COMMIT=0 \
@@ -33,4 +33,4 @@ ENV ALLOW_RESTARTS=0 \
     VERSION=1 \
     VOLUMES=0
     
-ENTRYPOINT start.sh
+ENTRYPOINT "start.sh"
