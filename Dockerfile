@@ -1,12 +1,10 @@
-FROM haproxy:2.7.2-alpine3.17
-USER root
-
-COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
-COPY start.sh /usr/local/bin/start.sh
+FROM alpine:20230208
 
 RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates wget tzdata openssl && \
-    chmod +x /usr/local/bin/start.sh
+    apk add --no-cache ca-certificates wget tzdata openssl haproxy
+    
+COPY haproxy.cfg /etc/haproxy/haproxy.cfg
+COPY --chmod 764 start.sh /usr/local/bin/start.sh
 
 ENV ALLOW_RESTARTS=0 \
     AUTH=0 \
