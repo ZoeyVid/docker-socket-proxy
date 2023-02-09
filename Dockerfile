@@ -33,4 +33,4 @@ ENV ALLOW_POWER=0 \
     VERSION=1 \
     VOLUMES=0
     
-ENTRYPOINT "start.sh"
+ENTRYPOINT ["start.sh"]
