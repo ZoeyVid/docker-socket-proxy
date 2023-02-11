@@ -6,7 +6,7 @@ RUN apk upgrade --no-cache && \
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 COPY start.sh /usr/local/bin/start.sh
 ENTRYPOINT ["start.sh"]
-HEALTHCHECK CMD (curl -sL http://localhost:2375 -o /dev/null && curl -skL https://localhost:2375 -o /dev/null) || exit 1
+HEALTHCHECK CMD (curl -sI http://localhost:2375 -o /dev/null && curl -skI https://localhost:2375 -o /dev/null) || exit 1
 
 ENV ALLOW_POWER=0 \
     AUTH=0 \
