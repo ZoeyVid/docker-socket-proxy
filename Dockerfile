@@ -1,11 +1,12 @@
 FROM haproxy:2.7.2-alpine3.17
 USER root
 RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates wget tzdata openssl
+    apk add --no-cache ca-certificates tzdata openssl curl
     
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 COPY start.sh /usr/local/bin/start.sh
 ENTRYPOINT ["start.sh"]
+HEALTHCHECK CMD (curl -sL http://localhost:2375 && curl -Lsk https://localhost:2375) || exit 1
 
 ENV ALLOW_POWER=0 \
     AUTH=0 \
