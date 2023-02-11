@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-         token: ${{ secrets.YQ }}
+          token: ${{ secrets.YQ }}
       - name: update workflows
         run: for workflow in .github/workflows/*.yml; do yq "$workflow" | tee "$workflow".tmp && mv "$workflow".tmp "$workflow"; done
       - name: push changes
