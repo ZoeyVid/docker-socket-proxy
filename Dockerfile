@@ -1,4 +1,4 @@
-FROM haproxy:2.7.4-alpine3.17
+FROM haproxy:2.7.5-alpine3.17
 USER root
 RUN apk add --no-cache openssl curl
     
