@@ -1,6 +1,6 @@
 [![Last image-template](https://img.shields.io/badge/last%20template%20update-v0.1.3-informational)](https://github.com/Tecnativa/image-template/tree/v0.1.3)
-[![GitHub Container Registry](https://img.shields.io/badge/GitHub%20Container%20Registry-latest-%2324292e)](https://github.com/orgs/Tecnativa/packages/container/package/docker-socket-proxy)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-latest-%23099cec)](https://hub.docker.com/r/tecnativa/docker-socket-proxy)
+[![GitHub Container Registry](https://img.shields.io/badge/GitHub%20Container%20Registry-latest-%2324292e)](https://github.com/orgs/ZoeyVid/packages/container/package/docker-socket-proxy)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-latest-%23099cec)](https://hub.docker.com/r/zoeyvid/docker-socket-proxy)
 
 # Docker Socket Proxy
 
@@ -46,7 +46,7 @@ never happen.
             --name dockerproxy \
             -v /var/run/docker.sock:/var/run/docker.sock \
             -p 127.0.0.1:2375:2375 \
-            tecnativa/docker-socket-proxy
+            zoeyvid/docker-socket-proxy
 
 2.  Connect your local docker client to that socket:
 
