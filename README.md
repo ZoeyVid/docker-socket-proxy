@@ -121,14 +121,15 @@ default. Maximum caution when enabling these.
 You will possibly need to grant access to some of these API sections, which are not so
 extremely critical but can expose some information that your service does not need.
 
--   `ALLOW_POWER`
+-   `ALLOW_POWER` (containers/`id`/`start`|`stop`|`kill`|`restart`)
+-   `ALLOW_RESTART` (containers/`id`/`restart`)
+-   `ALLOW_START` (containers/`id`/`start`)
+-   `ALLOW_STOP` (containers/`id`/`stop`)
+-   `ALLOW_Kill` (containers/`id`/`kill`)
 -   `BUILD`
 -   `COMMIT`
 -   `CONFIGS`
 -   `CONTAINERS`
--   `ALLOW_START` (containers/`id`/`start`)
--   `ALLOW_STOP` (containers/`id`/`stop`)
--   `ALLOW_RESTARTS` (containers/`id`/`stop`|`restart`|`kill`)
 -   `DISTRIBUTION`
 -   `EXEC`
 -   `GRPC`
