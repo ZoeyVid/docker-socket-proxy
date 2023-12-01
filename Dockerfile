@@ -9,6 +9,9 @@ ENTRYPOINT ["tini", "--", "start.sh"]
 HEALTHCHECK CMD (curl -sI http://localhost:2375 -o /dev/null && curl -skI https://localhost:2375 -o /dev/null) || exit 1
 
 ENV ALLOW_POWER=0 \
+    ALLOW_RESTARTS=0 \
+    ALLOW_STOP=0 \
+    ALLOW_START=0 \
     AUTH=0 \
     BUILD=0 \
     COMMIT=0 \
