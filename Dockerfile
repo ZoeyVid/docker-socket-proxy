@@ -1,4 +1,4 @@
-FROM haproxy:2.9.3-alpine3.19
+FROM haproxy:2.9.4-alpine3.19
 USER root
 RUN apk add --no-cache ca-certificates tzdata tini openssl curl
     
