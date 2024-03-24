@@ -1,6 +1,7 @@
 FROM haproxy:2.9.6-alpine3.19
 USER root
-RUN apk add --no-cache ca-certificates tzdata tini openssl curl && \
+RUN apk upgrade --no-cache -a && \
+    apk add --no-cache ca-certificates tzdata tini openssl curl && \
     chown -R nobody:nobody /tmp
     
 COPY start.sh /usr/local/bin/start.sh
