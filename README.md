@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is a fork of https://github.com/Tecnativa/docker-socket-proxy with added https support and updated haproxy
+This is a fork of https://github.com/Tecnativa/docker-socket-proxy with added https support and updated haproxy, to a few line of this README.md and the haproxy.cfg config still applys the Apache-2.0 license.
 
 ## Grant or revoke access to certain API sections
 
