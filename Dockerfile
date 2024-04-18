@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:labs
 FROM haproxy:2.9.7-alpine3.19
 USER root
 RUN apk upgrade --no-cache -a && \
