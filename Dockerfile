@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM haproxy:2.9.7-alpine3.20
+FROM haproxy:2.9.8-alpine3.20
 USER root
 COPY --from=zoeyvid/curl-quic:390 /usr/local/bin/curl /usr/local/bin/curl
 RUN apk upgrade --no-cache -a && \
