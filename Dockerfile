@@ -1,9 +1,8 @@
 # syntax=docker/dockerfile:labs
 FROM haproxy:3.0.7-alpine3.21
 USER root
-COPY --from=zoeyvid/curl-quic:431 /usr/local/bin/curl /usr/local/bin/curl
 RUN apk upgrade --no-cache -a && \
-    apk add --no-cache ca-certificates tzdata tini openssl && \
+    apk add --no-cache ca-certificates tzdata tini openssl curl && \
     chown -R nobody:nobody /tmp
     
 COPY start.sh /usr/local/bin/start.sh
