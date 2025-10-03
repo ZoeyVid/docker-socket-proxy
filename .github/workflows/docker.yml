@@ -2,6 +2,7 @@ name: Build Docker Image
 on:
   push:
     branches:
+      - latest
       - develop
     paths:
       - start.sh
