@@ -34,10 +34,10 @@ API, so they are granted by default.
 These API sections are considered security-critical, and thus access is revoked by
 default. Maximum caution when enabling these.
 
--   `AUTH`
--   `SECRETS`
--   `POST`: When disabled, only `GET` and `HEAD` operations are allowed, meaning any section of the API is read-only.
--   `NOPOST` Allows ALL (with ALL I mean ALL) GET requests to the socket (so no POST, HEAD, etc.) - so full read-only access
+- `AUTH`
+- `SECRETS`
+- `POST`: When disabled, all `POST` operations are blocked, meaning any section of the API is read-only.
+- `ALL`: Allows everything, exept for `POST` if not enabled
 
 #### Not always needed
 
