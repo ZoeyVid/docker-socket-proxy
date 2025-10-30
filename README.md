@@ -37,7 +37,7 @@ default. Maximum caution when enabling these.
 - `AUTH`
 - `SECRETS`
 - `POST`: When disabled, all `POST` operations are blocked, meaning any section of the API is read-only.
-- `ALL`: Allows everything, exept for `POST` if not enabled
+- `ALL`: Allows everything, except for `POST` if not enabled
 
 #### Not always needed
 
