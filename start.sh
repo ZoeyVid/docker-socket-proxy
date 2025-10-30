@@ -1,8 +1,10 @@
-#!/bin/sh
-openssl req -nodes -new -x509 -subj '/CN=*' -sha256 -keyout /tmp/privkey.pem -out /tmp/fullchain.pem -days 365000 > /dev/null 2>&1
-cat /tmp/fullchain.pem /tmp/privkey.pem | tee /tmp/cert.pem > /dev/null 2>&1
-if [ "$NOPOST" = "1" ]; then
-haproxy -f /etc/haproxy/haproxy-no-post.cfg -W -db
-else
-haproxy -f /etc/haproxy/haproxy.cfg -W -db
+#!/usr/bin/env sh
+
+if [ ! -s /tmp/privkey.pem ] || [ ! -s /tmp/fullchain.pem ]; then
+  openssl req -new -newkey ec -pkeyopt ec_paramgen_curve:secp384r1 -days 365000 -nodes -x509 -subj '/CN=*' -sha512 -keyout /tmp/privkey.pem -out /tmp/fullchain.pem
 fi
+if [ ! -s /tmp/cert.pem ]; then
+  cat /tmp/fullchain.pem /tmp/privkey.pem > /tmp/cert.pem
+fi
+
+exec haproxy -f /etc/haproxy/haproxy.cfg -W -db
