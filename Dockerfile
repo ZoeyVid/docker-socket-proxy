@@ -8,7 +8,6 @@ RUN apk upgrade --no-cache -a && \
     
 COPY start.sh /usr/local/bin/start.sh
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
-COPY haproxy-no-post.cfg /etc/haproxy/haproxy-no-post.cfg
 ENTRYPOINT ["tini", "--", "start.sh"]
 HEALTHCHECK CMD (curl -sSfLI http://localhost:2375 -o /dev/null && curl -sSfLIk https://localhost:2375 -o /dev/null) || exit 1
 
