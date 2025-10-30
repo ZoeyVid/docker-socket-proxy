@@ -3,13 +3,14 @@ FROM haproxy:3.2.7-alpine3.22
 USER root
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini openssl curl && \
+    curl -sSfL https://ssl-config.mozilla.org/ffdhe4096.txt -o ffdhe4096.pem && \
     chown -R nobody:nobody /tmp
     
 COPY start.sh /usr/local/bin/start.sh
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 COPY haproxy-no-post.cfg /etc/haproxy/haproxy-no-post.cfg
 ENTRYPOINT ["tini", "--", "start.sh"]
-HEALTHCHECK CMD (curl -sI http://localhost:2375 -o /dev/null && curl -skI https://localhost:2375 -o /dev/null) || exit 1
+HEALTHCHECK CMD (curl -sSfLI http://localhost:2375 -o /dev/null && curl -sSfLIk https://localhost:2375 -o /dev/null) || exit 1
 
 ENV ALLOW_POWER=0 \
     ALLOW_RESTART=0 \
