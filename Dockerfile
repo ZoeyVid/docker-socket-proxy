@@ -42,4 +42,4 @@ ENV ALLOW_POWER=0 \
     TASKS=0 \
     VERSION=1 \
     VOLUMES=0 \
-    NOPOST=0
+    ALL=0
