@@ -3,7 +3,7 @@ FROM haproxy:3.3.5-alpine3.23
 USER root
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini openssl curl && \
-    curl -sSfL https://ssl-config.mozilla.org/ffdhe4096.txt -o /tmp/ffdhe4096.pem && \
+    curl -sSfL https://ssl-config.mozilla.org/ffdhe4096.txt -o /etc/ffdhe4096.pem && \
     chown -R nobody:nobody /tmp
     
 COPY start.sh /usr/local/bin/start.sh
