@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:labs
-FROM haproxy:3.3.9-alpine3.23
+FROM haproxy:3.3.10-alpine3.23
 USER root
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini openssl curl && \
