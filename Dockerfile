@@ -13,9 +13,12 @@ HEALTHCHECK CMD (curl -sSLI http://localhost:2375 -o /dev/null && curl -sSLIk ht
 
 ENV ALLOW_POWER=0 \
     ALLOW_RESTART=0 \
+    ALLOW_RESTARTS=0 \
     ALLOW_START=0 \
     ALLOW_STOP=0 \
     ALLOW_KILL=0 \
+    ALLOW_PAUSE=0 \
+    ALLOW_UNPAUSE=0 \
     AUTH=0 \
     BUILD=0 \
     COMMIT=0 \

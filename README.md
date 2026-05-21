@@ -44,11 +44,14 @@ default. Maximum caution when enabling these.
 You will possibly need to grant access to some of these API sections, which are not so
 extremely critical but can expose some information that your service does not need.
 
--   `ALLOW_POWER` (containers/`id`/`start`|`stop`|`kill`|`restart`)
+-   `ALLOW_POWER` (containers/`id`/`start`|`stop`|`kill`|`restart`|`pause`|`unpause`)
 -   `ALLOW_RESTART` (containers/`id`/`restart`)
+-   `ALLOW_RESTARTS` (containers/`id`/`stop`|`restart`|`kill`)
 -   `ALLOW_START` (containers/`id`/`start`)
 -   `ALLOW_STOP` (containers/`id`/`stop`)
 -   `ALLOW_Kill` (containers/`id`/`kill`)
+-   `ALLOW_PAUSE` (containers/`id`/`pause`)
+-   `ALLOW_UNPAUSE` (containers/`id`/`unpause`)
 -   `BUILD`
 -   `COMMIT`
 -   `CONFIGS`
