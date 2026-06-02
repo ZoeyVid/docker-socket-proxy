@@ -7,8 +7,8 @@ jobs:
   test-json:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.3
       - name: json-syntax-check
-        uses: limitusus/json-syntax-check@v2
+        uses: limitusus/json-syntax-check@v2.0.3
         with:
           pattern: "\\.json"
