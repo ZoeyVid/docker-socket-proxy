@@ -7,4 +7,20 @@ if [ ! -s /tmp/cert.pem ]; then
   cat /tmp/fullchain.pem /tmp/privkey.pem > /tmp/cert.pem
 fi
 
-exec haproxy -f /etc/haproxy/haproxy.cfg -W -db
+PGID="$(stat -c "%g" $SOCKET_PATH)"
+
+if [ -n "$(getent group "$PGID" 2>/dev/null)" ]; then
+    :
+elif [ -n "$(getent group dsp 2>/dev/null)" ]; then
+    groupmod -g "$PGID" dsp
+else
+    groupadd -g "$PGID" dsp
+fi
+
+if [ -z "$(getent passwd dsp 2>/dev/null)" ]; then
+    useradd -g "$PGID" -M -d /tmp -s /sbin/nologin dsp
+else
+    usermod -g "$PGID" -G "" -d /tmp dsp
+fi
+
+exec su-exec "dsp:$PGID" haproxy -f /etc/haproxy/haproxy.cfg -W -db
