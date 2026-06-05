@@ -17,10 +17,4 @@ else
     groupadd -g "$PGID" dsp
 fi
 
-if [ -z "$(getent passwd dsp 2>/dev/null)" ]; then
-    useradd -g "$PGID" -M -d /tmp -s /sbin/nologin dsp
-else
-    usermod -g "$PGID" -G "" -d /tmp dsp
-fi
-
-exec su-exec "dsp:$PGID" haproxy -f /etc/haproxy/haproxy.cfg -W -db
+exec su-exec "nobody:$PGID" haproxy -f /etc/haproxy/haproxy.cfg -W -db
