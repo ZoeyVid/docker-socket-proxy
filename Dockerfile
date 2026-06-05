@@ -2,7 +2,7 @@
 FROM haproxy:3.4.0-alpine3.23
 USER root
 RUN apk upgrade --no-cache -a && \
-    apk add --no-cache ca-certificates tzdata tini openssl su-exec curl && \
+    apk add --no-cache ca-certificates tzdata tini openssl shadow su-exec curl && \
     curl -sSfL https://ssl-config.mozilla.org/ffdhe4096.txt -o /etc/ffdhe4096.pem && \
     chown -R nobody:nobody /tmp
     
