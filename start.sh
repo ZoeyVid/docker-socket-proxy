@@ -7,14 +7,4 @@ if [ ! -s /tmp/cert.pem ]; then
   cat /tmp/fullchain.pem /tmp/privkey.pem > /tmp/cert.pem
 fi
 
-PGID="$(stat -c "%g" "$SOCKET_PATH")"
-
-if [ -n "$(getent group "$PGID" 2>/dev/null)" ]; then
-    :
-elif [ -n "$(getent group dsp 2>/dev/null)" ]; then
-    groupmod -g "$PGID" dsp
-else
-    groupadd -g "$PGID" dsp
-fi
-
-exec su-exec "nobody:$PGID" haproxy -f /etc/haproxy/haproxy.cfg -W -db
+exec su-exec "nobody:$(stat -c "%g" "$SOCKET_PATH")" haproxy -f /etc/haproxy/haproxy.cfg -W -db
