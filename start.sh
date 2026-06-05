@@ -7,7 +7,7 @@ if [ ! -s /tmp/cert.pem ]; then
   cat /tmp/fullchain.pem /tmp/privkey.pem > /tmp/cert.pem
 fi
 
-PGID="$(stat -c "%g" $SOCKET_PATH)"
+PGID="$(stat -c "%g" "$SOCKET_PATH")"
 
 if [ -n "$(getent group "$PGID" 2>/dev/null)" ]; then
     :
