@@ -23,4 +23,6 @@ else
     usermod -g "$PGID" -G "" -d /tmp dsp
 fi
 
+chmod "dsp:$PGID" /tmp/cert.pem
+
 exec su-exec "dsp:$PGID" haproxy -f /etc/haproxy/haproxy.cfg -W -db
