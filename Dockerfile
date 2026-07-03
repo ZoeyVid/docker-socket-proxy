@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:labs@sha256:7d49dad25a050e14338ba7028b0460243f9d911dedc160a8fe20c34738fef3af
+# syntax=docker/dockerfile:1.25.0@sha256:0adf442eae370b6087e08edc7c50b552d80ddf261576f4ebd6421006b2461f12
 FROM haproxy:3.4.0-alpine3.23@sha256:5614ec450485ce1f9f8c25d231cf7fbab9326302a395f2355e05cbbc2dd7468b
 USER root
 RUN apk upgrade --no-cache -a && \
