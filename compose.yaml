@@ -1,7 +1,8 @@
 services:
   dockerproxy:
     container_name: dockerproxy
-    image: zoeyvid/docker-socket-proxy
+    image: zoeyvid/docker-socket-proxy:latest # or ghcr.io/zoeyvid/docker-socket-proxy:latest
+    pull_policy: always
     restart: always
     ports:
       - "127.0.0.1:2375:2375"
