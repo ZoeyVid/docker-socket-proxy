@@ -1,3 +1,4 @@
+name: docker-socket-proxy
 services:
   dockerproxy:
     container_name: dockerproxy
