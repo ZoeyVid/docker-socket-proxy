@@ -1,5 +1,5 @@
-# syntax=docker/dockerfile:labs
-FROM haproxy:3.4.0-alpine3.23
+# syntax=docker/dockerfile:labs@sha256:7d49dad25a050e14338ba7028b0460243f9d911dedc160a8fe20c34738fef3af
+FROM haproxy:3.4.0-alpine3.23@sha256:5614ec450485ce1f9f8c25d231cf7fbab9326302a395f2355e05cbbc2dd7468b
 USER root
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache ca-certificates tzdata tini openssl shadow su-exec curl && \
