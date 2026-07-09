@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - latest
-      - develop
     paths:
       - start.sh
       - Dockerfile
