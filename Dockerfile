@@ -9,7 +9,7 @@ RUN apk upgrade --no-cache -a && \
 COPY start.sh /usr/local/bin/start.sh
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 ENTRYPOINT ["tini", "--", "start.sh"]
-HEALTHCHECK CMD (curl -sSLI http://localhost:2375 -o /dev/null && curl -sSLIk https://localhost:2375 -o /dev/null) || exit 1
+HEALTHCHECK CMD [ "$(curl -sSfL http://localhost:2375/_ping)" = "OK" ] && [ "$(curl -sSfLk https://localhost:2375/_ping)" = "OK" ] && [ "$(curl -sSfLk https://localhost:2376/_ping)" = "OK" ] || exit 1
 
 ENV ALLOW_POWER=0 \
     ALLOW_RESTART=0 \
