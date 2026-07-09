@@ -7,6 +7,7 @@ services:
     pull_policy: always
     ports:
       - "127.0.0.1:2375:2375"
+      - "127.0.0.1:2376:2376"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
