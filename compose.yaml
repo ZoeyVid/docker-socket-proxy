@@ -2,13 +2,24 @@ name: docker-socket-proxy
 services:
   dockerproxy:
     container_name: dockerproxy
-    restart: always
+    restart: unless-stopped
     image: zoeyvid/docker-socket-proxy:latest # or ghcr.io/zoeyvid/docker-socket-proxy:latest
     pull_policy: always
+    network_mode: bridge
     ports:
       - "127.0.0.1:2375:2375"
       - "127.0.0.1:2376:2376"
+    read_only: true
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     environment:
-      - "TZ=Europe/Berlin"
+      TZ: Europe/Berlin
