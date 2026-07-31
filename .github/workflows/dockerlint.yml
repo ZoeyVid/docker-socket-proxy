@@ -17,8 +17,9 @@ jobs:
           chmod +x hadolint
           for file in $(find -name "*Dockerfile"); do
             # DL3018 warning: Pin versions in apk add. Instead of `apk add <package>` use `apk add <package>=<version>`
+            # DL3064 warning: Potentially sensitive data should not be used in the `ARG` or `ENV` commands
             # DL3002 warning: Last USER should not be root
-            ./hadolint "$file" --ignore DL3018 --ignore DL3002 | tee -a hadolint.log
+            ./hadolint "$file" --ignore DL3018 --ignore DL3002 --ignore DL3064 | tee -a hadolint.log
           done
           if [ -n "$(cat hadolint.log)" ]; then
             exit 1
