@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.26.0@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
 FROM haproxy:3.4.3-alpine3.24@sha256:fb87fc81943143b9acaea7442973e6ba654035fff76ffe7af6829dd1bcb0f7a5
-USER root
+USER 0:0
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache tzdata tini openssl su-exec curl && \
     chown -R nobody:nobody /tmp
@@ -8,7 +8,7 @@ RUN apk upgrade --no-cache -a && \
 COPY start.sh /usr/local/bin/start.sh
 COPY haproxy.cfg /etc/haproxy/haproxy.cfg
 ENTRYPOINT ["tini", "--", "start.sh"]
-HEALTHCHECK CMD [ "$(curl -sSfL http://localhost:2375/_ping)" = "OK" ] && [ "$(curl -sSfLk https://localhost:2375/_ping)" = "OK" ] && [ "$(curl -sSfLk https://localhost:2376/_ping)" = "OK" ] || exit 1
+HEALTHCHECK CMD ["/bin/sh", "-c", "[ \"$(curl -sSfL http://localhost:2375/_ping)\" = \"OK\" ] && [ \"$(curl -sSfLk https://localhost:2375/_ping)\" = \"OK\" ] && [ \"$(curl -sSfLk https://localhost:2376/_ping)\" = \"OK\" ]"]
 
 ENV ALLOW_POWER=0 \
     ALLOW_RESTART=0 \
