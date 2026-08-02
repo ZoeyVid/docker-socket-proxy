@@ -21,6 +21,6 @@ jobs:
             # DL3002 warning: Last USER should not be root
             ./hadolint "$file" --ignore DL3018 --ignore DL3002 --ignore DL3064 | tee -a hadolint.log
           done
-          if [ -n "$(cat hadolint.log)" ]; then
+          if [ -s hadolint.log ]; then
             exit 1
           fi
