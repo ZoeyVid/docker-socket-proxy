@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.28.0@sha256:bb22d9815c728170f72750f4e5b0d672e06176142e1d602c7e66c050100b7e5b
-FROM haproxy:3.4.7-alpine3.24@sha256:251da69821897ec8c4819f12b1babbc4b71f562943addc9b9eb14bb6ece40dc6
+FROM haproxy:3.4.7-alpine3.24@sha256:09ba5c0b582cda2fa00e1f7f23f6e29cc27000089d6ffeb3c8683f930126ed10
 USER 0:0
 RUN apk upgrade --no-cache -a && \
     apk add --no-cache tzdata tini openssl su-exec curl && \
