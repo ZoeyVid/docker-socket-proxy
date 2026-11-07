@@ -16,7 +16,7 @@ services:
       - SETGID
       - SETUID
     security_opt:
-      - no-new-privileges:true
+      - no-new-privileges=true
     tmpfs:
       - /tmp
     volumes:
